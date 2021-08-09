@@ -47,6 +47,9 @@
     <ClInclude Include="tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TestObj1.txt">
@@ -58,5 +61,19 @@
     <Text Include="smoothcube.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="swyambhu.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="swyambhybella.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="ironman.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="3D Viewing Lab 5.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

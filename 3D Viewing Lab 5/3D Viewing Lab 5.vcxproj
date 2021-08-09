@@ -149,13 +149,20 @@
     <ClInclude Include="matrices.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="modelparser.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="structures.h" />
     <ClInclude Include="tools.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="eye.txt" />
+    <Text Include="ironman.txt" />
     <Text Include="smoothcube.txt" />
+    <Text Include="swyambhu.txt" />
+    <Text Include="swyambhybella.txt" />
     <Text Include="TestObj1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="3D Viewing Lab 5.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

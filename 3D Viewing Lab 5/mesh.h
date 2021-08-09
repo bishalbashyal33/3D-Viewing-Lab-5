@@ -43,9 +43,7 @@ private:
 
 
 public:
-	/*vertex vCamera = { 0,0,-10 };
-	cam vCam;
-	*/
+
 
 	poly3d() {
 		//mat = projectionMatrix();
@@ -74,37 +72,11 @@ public:
 		mat.m[2][3] = 1.0f;
 		mat.m[3][3] = 0.0f;
 		//*/
-		//	mesh.triangles = {
-
-		//	// south
-		//	{ 0.0f, 0.0f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 1.0f, 0.0f },
-		//	{ 0.0f, 0.0f, 0.0f,    1.0f, 1.0f, 0.0f,    1.0f, 0.0f, 0.0f },
-
-		//	// east                                                      
-		//	{ 1.0f, 0.0f, 0.0f,    1.0f, 1.0f, 0.0f,    1.0f, 1.0f, 1.0f },
-		//	{ 1.0f, 0.0f, 0.0f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f, 1.0f },
-
-		//	// north                                                     
-		//	{ 1.0f, 0.0f, 1.0f,    1.0f, 1.0f, 1.0f,    0.0f, 1.0f, 1.0f },
-		//	{ 1.0f, 0.0f, 1.0f,    0.0f, 1.0f, 1.0f,    0.0f, 0.0f, 1.0f },
-
-		//	// west                                                      
-		//	{ 0.0f, 0.0f, 1.0f,    0.0f, 1.0f, 1.0f,    0.0f, 1.0f, 0.0f },
-		//	{ 0.0f, 0.0f, 1.0f,    0.0f, 1.0f, 0.0f,    0.0f, 0.0f, 0.0f },
-
-		//	// top                                                       
-		//	{ 0.0f, 1.0f, 0.0f,    0.0f, 1.0f, 1.0f,    1.0f, 1.0f, 1.0f },
-		//	{ 0.0f, 1.0f, 0.0f,    1.0f, 1.0f, 1.0f,    1.0f, 1.0f, 0.0f },
-
-		//	// bottom                                                    
-		//	{ 1.0f, 0.0f, 1.0f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f, 0.0f },
-		//	{ 1.0f, 0.0f, 1.0f,    0.0f, 0.0f, 0.0f,    1.0f, 0.0f, 0.0f },
-
-		//};
+		
 
 
-		//mesh.LoadFromObjectFile("pumpkin.txt");
-		object = new ModelParse("TestObj1.txt");
+		//mesh.LoadFromObjectFile("eye.txt");
+		object = new ModelParse("smoothcube.txt");
 
 
 
@@ -134,7 +106,7 @@ public:
 		matRotY = RotationMatrixY(fTheta);
 
 		//Translation
-		matTran = TranslationMatrix(0.0f, 0.0f, tranvalue + 5.0f);
+		matTran = TranslationMatrix(0.0f, 0.0f, tranvalue + 20.0f);
 
 		//Scale by 1/2
 		halfscale = ScaleMatrix(0.5f, 0.5f, 0.5f);
@@ -224,7 +196,9 @@ public:
 
 			// Offset into the screen
 
-			//transformMultiplication(triTranslated, triTranslated, matTran);
+			transformMultiplication(triTranslated, triTranslated, matTran);
+			//MultiplyMatrixVector(triTranslated, triTranslated, flipymatrix);
+
 			
 
 
@@ -272,11 +246,15 @@ public:
 				dp = normal.x * light_direction.x + normal.y * light_direction.y + normal.z * light_direction.z;
 
 
+			
+
 				MultiplyMatrixVector(triTranslated, triCamviewed, viewmat);
+				//MultiplyMatrixVector(triCamviewed, triCamviewed, matTran);
 
 				// Project triangles from 3D --> 2D
-
+				
 				MultiplyMatrixVector(triCamviewed, triProjected, mat);
+				
 
 				//transformMultiplication(triProjected, triProjected, vscaleMatrix);
 				// Scale into view
@@ -293,6 +271,8 @@ public:
 
 				transformMultiplication(triProjected, triProjected, scaleMatrix);
 				//transformMultiplication(triProjected, triProjected, translatetocenter);
+
+				
 
 				//transformMultiplication(triProjected, triProjected, flipymatrix);
 

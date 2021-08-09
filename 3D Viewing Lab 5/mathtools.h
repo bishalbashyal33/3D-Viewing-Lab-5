@@ -247,12 +247,10 @@ void fillBottomFlatTriangle(vertex v1, vertex v2, vertex v3, float& dp)
 
     float curx1 = v1.x;
     float curx2 = v1.x;
-    DDAlgorithm(v1.x, v1.y, v2.x, v2.y, dp);
-    DDAlgorithm(v2.x, v2.y, v3.x, v3.y, dp);
-    DDAlgorithm(v3.x, v3.y, v1.x, v1.y, dp);
+  
 
 
-    for (int scanlineY = v1.y; scanlineY < v2.y - 0.5f; scanlineY++)
+    for (float scanlineY = v1.y; scanlineY <v2.y-0.5f; scanlineY++)
     {
         if (scanlineY == v2.y) {
             cout << "x" << curx1 << "," << curx2 << endl;
@@ -279,7 +277,7 @@ void fillTopFlatTriangle(vertex& v1, vertex& v2, vertex& v3, float& dp)
     DDAlgorithm(v2.x, v2.y, v3.x, v3.y, dp);
     DDAlgorithm(v3.x, v3.y, v1.x, v1.y, dp);
 
-    for (int scanlineY = v3.y; scanlineY > v1.y; scanlineY--)
+    for (float scanlineY = v3.y; scanlineY > v1.y; scanlineY--)
     {
         DDAlgorithm(curx1, scanlineY, curx2, scanlineY, dp);
         curx1 -= invslope1;

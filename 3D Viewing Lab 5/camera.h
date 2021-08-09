@@ -171,12 +171,11 @@ struct cam {
         return Matrix_Inverse(temp);
     }
 
-
 };
 
 
 struct ptlight {
-    float ambientLight = 0.4f;
+    float ambientLight = 0.2f;
     float ambientcoefficient = 1.0f;
     float diffusecoefficient = 0.6f;
     vertex pointlight = { 0.0f,0.0f,-10.0f };
@@ -184,8 +183,8 @@ struct ptlight {
     vertex pointtoCameraVector[3];
     float ambientoffset = 0.9f;
     float intensity[3];
-    float specularcoefficient = 20.0f;;
-    float specularalpha = 120.0f;
+    float specularcoefficient = 200.0f;;
+    float specularalpha = 500.0f;
 
 
     //our  code does not rotate the normal, so, the lgiht is rendered based on the  initial normal positioning, this  needs to be reworked.
@@ -232,7 +231,7 @@ struct ptlight {
             float specularlight = clamp(specularcoefficient * pow(max(dotProduct(reflectionvector, pointtoCameraVector[i]),0.0f),specularalpha),1.0f,0.0f);
            // cout << specularlight<<endl;
             intensity[i] =clamp(specularlight+ambientlighting+diffuselighting,1,0);
-           cout << "Intesnity "<<intensity[i]<<endl;
+          // cout << "Intesnity "<<intensity[i]<<endl;
 
         }
 
@@ -241,6 +240,7 @@ struct ptlight {
     vertex reflect(vertex incidentlight, vertex normal) {
       
         return subvertex(incidentlight,normal*(2 * dotProduct(incidentlight, normal)));
+
     }
 
     //this code segment need debugging
